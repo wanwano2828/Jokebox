@@ -20,6 +20,12 @@ class MicropostsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   
+  def show
+    @micropost = Micropost.includes(:user).find(params[:id])
+    @comments = @micropost.comments.includes(:user).all
+    @comment = @micropost.comments.build(user_id: current_user.id) if current_user # form_with 用
+  end
+  
   private
 
   def micropost_params
