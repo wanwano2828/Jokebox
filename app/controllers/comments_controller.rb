@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       @micropost = Micropost.find(params[:micropost_id]) 
+      @comments = @micropost.comments.includes(:user)
       flash.now[:danger] = '投稿へのコメントに失敗しました。'
       render 'microposts/show'
     end
@@ -25,7 +26,7 @@ class CommentsController < ApplicationController
   private
   
   def comment_params
-    params.require(:comment).permit(:content, :micropost_id, :user_id)
+    params.require(:comment).permit(:content)
   end
   
   def correct_user

@@ -21,9 +21,9 @@ class MicropostsController < ApplicationController
   end
   
   def show
-    @micropost = Micropost.includes(:user).find(params[:id])
-    @comments = @micropost.comments.includes(:user).all
-    @comment = @micropost.comments.build(user_id: current_user.id) if current_user # form_with 用
+    @micropost = Micropost.find(params[:id])
+    @comments = @micropost.comments.includes(:user)
+    @comment = @micropost.comments.build # form_with 用
   end
   
   private
