@@ -26,6 +26,10 @@ class MicropostsController < ApplicationController
     @comment = @micropost.comments.build # form_with 用
   end
   
+  def index
+    @all_ranks = Micropost.create_all_ranks
+  end
+  
   private
 
   def micropost_params

@@ -7,4 +7,8 @@ class Micropost < ApplicationRecord
   has_many :users, through: :favorites
   has_many :comments, dependent: :destroy
   has_many :commenters, through: :comments, source: :user
+  
+  def self.create_all_ranks
+    Micropost.find(Favorite.group(:micropost_id).order('count(micropost_id) desc').limit(5).pluck(:micropost_id))
+  end
 end

@@ -20,6 +20,11 @@
   <body>
     <%= render 'layouts/navbar' %>
     <div class="container">
+      
+      <div id="back-to-top" style="position:fixed;right:25px;bottom:5px">
+        <a href="#"><i class="fas fa-chevron-circle-up fa-4x"></i></a>
+      </div>
+      
       <%= render 'layouts/flash_messages' %>
       
       <%= yield %>
