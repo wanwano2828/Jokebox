@@ -59,3 +59,5 @@ gem 'kaminari'
 gem 'pry-byebug', group: :development
 
 gem 'jquery-rails'
+
+gem 'counter_culture', '~> 1.8'

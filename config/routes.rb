@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'ranking', to: 'microposts#index'
   resources :microposts, only: [:create, :destroy, :show, :index] do
     resources :comments, only: [:create, :destroy]
   end
