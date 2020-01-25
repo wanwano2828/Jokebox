@@ -2,10 +2,12 @@
   <%= form_with(model: current_user.favorites.find_by(micropost_id: micropost.id), local: true, method: :delete) do |f| %>
     <%= hidden_field_tag :micropost_id, micropost.id %>
     <%= f.submit 'Unfavorite', class: 'btn btn-danger btn-sm' %>
+    <%= render 'favorites/favorite_count', micropost: micropost %>
   <% end %>
 <% else %>
   <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
     <%= hidden_field_tag :micropost_id, micropost.id %>
     <%= f.submit 'Favorite', class: 'btn btn-primary btn-sm' %>
+    <%= render 'favorites/favorite_count', micropost: micropost %>
   <% end %>
 <% end %>
